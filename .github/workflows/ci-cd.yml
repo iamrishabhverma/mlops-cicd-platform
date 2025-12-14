@@ -10,11 +10,11 @@ jobs:
         pip install scikit-learn
         python model/train.py
         cp model/model.pkl api/model.pkl
-        
+
     - name: Notify Slack
       uses: slackapi/slack-github-action@v1
       with:
         payload: |
-          {"text":"🚀 ML API deployed successfully!"}
+          {"text":"TEST: 🚀 ML API deployed successfully!"}
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}    
