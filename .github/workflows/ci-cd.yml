@@ -9,7 +9,7 @@ jobs:
       - name: Train model
         run: |
           pip install scikit-learn
-          pip install -r api/requirements.txt
+          pip install -r api/requirements.txt 
           python api/model/train.py
           cp api/model/model.pkl api/model.pkl
 
@@ -17,6 +17,6 @@ jobs:
         uses: slackapi/slack-github-action@v1
         with:
           payload: |
-            {"text":"TEST🚀 ML API deployed successfully!"}
+            {"text":"ML API deployed successfully!🔥"}
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
