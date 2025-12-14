@@ -4,17 +4,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Train model
-      run: |
-        pip install scikit-learn
-        python model/train.py
-        cp model/model.pkl api/model.pkl
+      - uses: actions/checkout@v3
 
-    - name: Notify Slack
-      uses: slackapi/slack-github-action@v1
-      with:
-        payload: |
-          {"text":"TEST🚀 ML API deployed successfully!"}
-      env:
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}    
+      - name: Train model
+        run: |
+          pip install scikit-learn
+          pip install -r api/requirements.txt
+          python api/model/train.py
+          cp api/model/model.pkl api/model.pkl
+
+      - name: Notify Slack
+        uses: slackapi/slack-github-action@v1
+        with:
+          payload: |
+            {"text":"TEST🚀 ML API deployed successfully!"}
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
