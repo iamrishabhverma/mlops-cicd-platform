@@ -1,0 +1,12 @@
+apiVersion: k3d.io/v1alpha5
+kind: Simple
+metadata:
+  name: mlops
+# Number of k3s server nodes (single node cluster)
+servers: 1
+# Port mapping in k3d: `hostPort:containerPort` is widely supported; some older k3d versions
+# do not accept node filters like `@loadbalancer` in the port mapping so we use the simpler form
+# for compatibility. If your k3d version supports `@loadbalancer`, you can add it back.
+agents: 0
+ports:
+  - port: 8081:80
