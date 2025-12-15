@@ -48,9 +48,12 @@ k3d image import ml-api:latest -c mlops
 ```
 ### Deploy to k3s cluster
 ```bash 
-kubectl apply -f k8s/ml-api/namespace.yaml
+kubectl apply -f k8s/ml-api/namespace.yaml  
 kubectl apply -f k8s/ml-api/deployment.yaml
 kubectl apply -f k8s/ml-api/service.yaml
+kubectl apply -f ./k8s/monitoring/prometheus-service.yaml
+kubectl apply -f ./k8s/monitoring/grafana-service.yaml
+kubectl apply -f ./k8s/monitoring/grafana-deployment.yaml
 kubectl get all -n mlops
 ```
 ### Verify deployment
