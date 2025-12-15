@@ -68,7 +68,7 @@ kubectl port-forward svc/prometheus 9090:9090 -n mlops
 kubectl port-forward svc/grafana 3000:3000 -n mlops
 ```
 
-###Run Bash script
+### Run Bash script
 ```bash
 chmod +x deploy.sh
 ./deploy.sh
