@@ -61,7 +61,7 @@ kubectl get all -n mlops
 kubectl get pods -n mlops
 kubectl get svc -n mlops
 ```
-### Port-forwarding, for FastAPI(8000), Prometheus(9000), Grafana(3000)
+### Port-forwarding, for FastAPI(8000), Prometheus(9090), Grafana(3000)
 ```bash
 kubectl port-forward svc/ml-api-service 8000:80 -n mlops
 kubectl port-forward svc/prometheus 9090:9090 -n mlops
