@@ -19,9 +19,10 @@ jobs:
 
     - name: Train ML model
       run: |
-        pip install scikit-learn
-        python model/train.py
-        cp model/model.pkl api/model.pkl
+         pip install scikit-learn
+         pip install -r api/requirements.txt 
+         python api/model/train.py
+         cp api/model/model.pkl api/model.pkl
 
     - name: Login to Docker Hub
       run: |
