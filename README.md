@@ -62,11 +62,34 @@ kubectl get all -n mlops
 kubectl get pods -n mlops
 kubectl get svc -n mlops
 ```
-### Port-forwarding, for FastAPI(8000), Prometheus(9090), Grafana(3000)
+
+### Verfify ArgoCD AutoSync 
+```bash
+kubectl get applications -n argocd
+```
+
+### Login ArgoCD
+```bash
+argocd login localhost:8080 \
+  --username admin \
+  --password $(kubectl -n argocd get secret argocd-initial-admin-secret \
+  -o jsonpath="{.data.password}" | base64 -d) \
+  --insecure
+```
+
+# Verify Context
+```bash
+argocd context
+argocd version
+  ```
+
+
+### Port-forwarding, for FastAPI(8000), Prometheus(9000), Grafana(3000), ArgoCD(8080)
 ```bash
 kubectl port-forward svc/ml-api-service 8000:80 -n mlops
 kubectl port-forward svc/prometheus 9090:9090 -n mlops
 kubectl port-forward svc/grafana 3000:3000 -n mlops
+kubectl port-forward svc/argocd-server -n argocd 8080:443 #ArgoCD UI
 ```
 
 ### Run Bash script
