@@ -51,6 +51,7 @@ k3d image import ml-api:latest -c mlops
 kubectl apply -f k8s/ml-api/namespace.yaml  
 kubectl apply -f k8s/ml-api/deployment.yaml
 kubectl apply -f k8s/ml-api/service.yaml
+kubectl apply -f argocd/mlops-app.yaml
 kubectl apply -f ./k8s/monitoring/prometheus-service.yaml
 kubectl apply -f ./k8s/monitoring/grafana-service.yaml
 kubectl apply -f ./k8s/monitoring/grafana-deployment.yaml

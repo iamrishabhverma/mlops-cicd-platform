@@ -1,3 +1,15 @@
+# Local notes & docs
+STEPS
+*.pdf
+*.png
+
+# Secrets / env
+.env
+env.example
+SECRET
+⚠️SECRET
+
+# Python
 .venv/
 __pycache__/
 *.pyc
