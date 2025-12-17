@@ -36,9 +36,9 @@ jobs:
       run: |
         docker push ${{ secrets.DOCKERHUB_USER }}/ml-api:latest
 
-    - name: Deploy to Kubernetes (k3d)
-      run: |
-        kubectl set image deployment/ml-api ml-api=${{ secrets.DOCKERHUB_USER }}/ml-api:latest -n mlops
+    # - name: Deploy to Kubernetes (k3d)
+    #   run: |
+    #     kubectl set image deployment/ml-api ml-api=${{ secrets.DOCKERHUB_USER }}/ml-api:latest -n mlops
 
     - name: Notify Slack
       uses: slackapi/slack-github-action@v1
