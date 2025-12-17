@@ -7,66 +7,13 @@ This project demonstrates a production-ready MLOps pipeline for a machine learni
 FastAPI ML API: Serves ML predictions and exposes metrics
 Docker: Containerizes the application
 Kubernetes (k3d): Orchestrates deployment
+ArgoCD Gitops CD operations
 Prometheus: Monitors metrics
 GitHub Actions: Automates CI/CD pipeline
 Slack notifications: Sends alerts on deployment
 
-┌──────────────────────┐
-│     Developer        │
-│     git commit       │
-│    push to main      │
-└──────────┬───────────┘
-           │
-           ▼
-┌──────────────────────────────┐
-│        GitHub Actions        │
-│        (CI Pipeline)         │
-│                              │
-│ 1. Checkout code             │
-│ 2. Setup Python              │
-│ 3. Train ML model            │
-│    → model.pkl               │
-│ 4. Build Docker image        │
-│    (API + model.pkl)         │
-│ 5. Push image to Docker Hub  │
-│                              │
-└──────────┬───────────────────┘
-           │
-           ▼
-┌──────────────────────────────-─────────────┐
-│               Docker Hub                   │
-│           ml-api:latest image              │
-│                  │                         │
-│                  ▼                         │
-│      Slack Notification #allDevopsClan     │
-│                                            │
-└──────────┬─────────────────────────────────┘
-           │   (Image polling)
-           ▼
-┌──────────────────────────────┐
-│           ArgoCD             │
-│   (Continuous Deployment)    │
-│                              │
-│ - Watches Git repo(manifests)│
-│ - Detects image updates      │
-│ - Syncs Kubernetes state     │
-└──────────┬───────────────────┘
-           │
-           ▼
-┌──────────────────────────────────────────────────────┐
-│              Kubernetes (k3d / k3s)                  │
-│                                                      │
-│  ┌─────────────┐     ┌───────────────┐               │
-│  │   ML API    │<───▶│  Prometheus   │               │
-│  │ (FastAPI)   │     │ (Metrics)     │               │
-│  └─────────────┘     └───────────────┘               │
-│          │                     │                     │
-│          ▼                     ▼                     │
-│    /metrics endpoint       Grafana                   │
-│                              │                       │
-│                              ▼                       │
-│                    Dashboards + Alerts               │
-└──────────────────────────────────────────────────────┘
+
+<img width="1024" height="1536" alt="CI_CD pipeline with Slack integration" src="https://github.com/user-attachments/assets/6339c249-239f-48c2-9ac6-6c2502649b4f" />
 
 
 ## Quick Start
