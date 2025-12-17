@@ -11,6 +11,64 @@ Prometheus: Monitors metrics
 GitHub Actions: Automates CI/CD pipeline
 Slack notifications: Sends alerts on deployment
 
+┌──────────────────────┐
+│     Developer        │
+│     git commit       │
+│    push to main      │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────────────┐
+│        GitHub Actions        │
+│        (CI Pipeline)         │
+│                              │
+│ 1. Checkout code             │
+│ 2. Setup Python              │
+│ 3. Train ML model            │
+│    → model.pkl               │
+│ 4. Build Docker image        │
+│    (API + model.pkl)         │
+│ 5. Push image to Docker Hub  │
+│                              │
+└──────────┬───────────────────┘
+           │
+           ▼
+┌──────────────────────────────-─────────────┐
+│               Docker Hub                   │
+│           ml-api:latest image              │
+│                  │                         │
+│                  ▼                         │
+│      Slack Notification #allDevopsClan     │
+│                                            │
+└──────────┬─────────────────────────────────┘
+           │   (Image polling)
+           ▼
+┌──────────────────────────────┐
+│           ArgoCD             │
+│   (Continuous Deployment)    │
+│                              │
+│ - Watches Git repo(manifests)│
+│ - Detects image updates      │
+│ - Syncs Kubernetes state     │
+└──────────┬───────────────────┘
+           │
+           ▼
+┌──────────────────────────────────────────────────────┐
+│              Kubernetes (k3d / k3s)                  │
+│                                                      │
+│  ┌─────────────┐     ┌───────────────┐               │
+│  │   ML API    │<───▶│  Prometheus   │               │
+│  │ (FastAPI)   │     │ (Metrics)     │               │
+│  └─────────────┘     └───────────────┘               │
+│          │                     │                     │
+│          ▼                     ▼                     │
+│    /metrics endpoint       Grafana                   │
+│                              │                       │
+│                              ▼                       │
+│                    Dashboards + Alerts               │
+└──────────────────────────────────────────────────────┘
+
+
 ## Quick Start
 
 ## Step-by-Step Setup
@@ -80,7 +138,7 @@ argocd login localhost:8080 \
 # Verify Context
 ```bash
 argocd context
-argocd version
+argocd version  
   ```
 
 
