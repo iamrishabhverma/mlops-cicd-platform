@@ -13,6 +13,10 @@ GitHub Actions: Automates CI/CD pipeline
 Slack notifications: Sends alerts on deployment
 
 
+[mlops-Readme.pdf](https://github.com/user-attachments/files/24224828/mlops-Readme.pdf)
+
+
+
 <img width="1024" height="1536" alt="CI_CD pipeline with Slack integration" src="https://github.com/user-attachments/assets/6339c249-239f-48c2-9ac6-6c2502649b4f" />
 
 
