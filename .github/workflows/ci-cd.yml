@@ -36,7 +36,7 @@ jobs:
         run: |
           docker push ${{ secrets.DOCKERHUB_USER }}/ml-api:latest
 
-      - name: ArgoCD Sync
+      
        
 
       # - name: Deploy to Kubernetes (k3d) 
