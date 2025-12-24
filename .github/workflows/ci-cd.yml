@@ -38,13 +38,8 @@ jobs:
 
       - name: ArgoCD Sync 
         run: echo "ArgoCD sync would be triggered here."
-       
 
-      # - name: Deploy to Kubernetes (k3d) 
-      #   run: |
-      #     kubectl set image deployment/ml-api ml-api=${{ secrets.DOCKERHUB_USER }}/ml-api:latest -n mlops
-
-      - name: Notify Slack
+      - name: Send Slack Notification
         uses: slackapi/slack-github-action@v1
         with:
           payload: |
