@@ -37,6 +37,8 @@ jobs:
           docker push ${{ secrets.DOCKERHUB_USER }}/ml-api:latest
 
       - name: ArgoCD Sync 
+        run: echo "ArgoCD sync would be triggered here."
+       
 
       # - name: Deploy to Kubernetes (k3d) 
       #   run: |
@@ -46,9 +48,8 @@ jobs:
         uses: slackapi/slack-github-action@v1
         with:
           payload: |
-            
             {
-              "text": "✅ ML API built & deployed successfully!\n\n📝 Commit: ${{ toJson(github.event.head_commit.message) }}"
+              "text": "✅ ML API built & deployed to Kubernetes successfully!"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
