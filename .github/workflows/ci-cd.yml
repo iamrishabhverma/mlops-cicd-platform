@@ -80,7 +80,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*Commit Description:*\n${{ github.event.head_commit.body || 'No description provided' }}"
+                    "text": "*Commit Description:*\n${github.event.head_commit.body}"
                   }
                 },
                 {
