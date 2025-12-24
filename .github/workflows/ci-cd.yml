@@ -40,8 +40,12 @@ jobs:
         run: echo "ArgoCD sync would be triggered here."
 
       - name: Send Slack Notification
-        uses: slackapi/slack-github-action@v2.23.0
+        uses: slackapi/slack-github-action@v2.1.1
         with:
-          payload: ${{ toJson({ text: "✅ ML API built & deployed successfully!\n\n📝 Commit: " + github.event.head_commit.message }) }}
-        env:  
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          webhook-type: incoming-webhook
+          payload: |
+            {
+              "text": "✅ ML API built & deployed successfully!\n\n📝 Commit: ${{ github.event.head_commit.message }}"
+            }
+              
