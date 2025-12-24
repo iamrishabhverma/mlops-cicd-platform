@@ -49,16 +49,20 @@ jobs:
           payload: |
             {
               "blocks": [
+
                 {
                   "type": "header",
                   "text": {
                     "type": "plain_text",
                     "text": "🚀 ML CI/CD Pipeline Update"
                   }
+
                 },
+                
                 {
                   "type": "section",
                   "fields": [
+                    
                     {
                       "type": "mrkdwn",
                       "text": "*Repository:*\n${{ github.repository }}"
@@ -73,14 +77,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*Commit Message:*\n${{ github.event.head_commit.message }}"
-                  }
-                },
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*Commit Description:*\n${github.event.head_commit.body}"
+                    "text": "*Commit Message:*\n${{ toJson(github.event.head_commit.message) }}"
                   }
                 },
                 {
@@ -95,18 +92,8 @@ jobs:
                       "text": "*Commit URL:*\n<${{ github.event.head_commit.url }}|View Commit>"
                     }
                   ]
-                },
-                {
-                  "type": "context",
-                  "elements": [
-                    {
-                      "type": "mrkdwn",
-                      "text": "✅ Build, model training, and Docker push completed successfully"
-                    }
-                  ]
                 }
               ]
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-
