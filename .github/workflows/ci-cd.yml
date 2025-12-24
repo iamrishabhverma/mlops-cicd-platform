@@ -36,7 +36,8 @@ jobs:
         run: |
           docker push ${{ secrets.DOCKERHUB_USER }}/ml-api:latest
 
-      
+      - name: ArgoCD Sync 
+        
        
 
       # - name: Deploy to Kubernetes (k3d) 
@@ -47,53 +48,9 @@ jobs:
         uses: slackapi/slack-github-action@v1
         with:
           payload: |
+            
             {
-              "blocks": [
-
-                {
-                  "type": "header",
-                  "text": {
-                    "type": "plain_text",
-                    "text": "🚀 ML CI/CD Pipeline Update"
-                  }
-
-                },
-                
-                {
-                  "type": "section",
-                  "fields": [
-                    
-                    {
-                      "type": "mrkdwn",
-                      "text": "*Repository:*\n${{ github.repository }}"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": "*Branch:*\n${{ github.ref_name }}"
-                    }
-                  ]
-                },
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*Commit Message:*\n${{ toJson(github.event.head_commit.message) }}"
-                  }
-                },
-                {
-                  "type": "section",
-                  "fields": [
-                    {
-                      "type": "mrkdwn",
-                      "text": "*Author:*\n${{ github.event.head_commit.author.name }}"
-                    },
-                    {
-                      "type": "mrkdwn",
-                      "text": "*Commit URL:*\n<${{ github.event.head_commit.url }}|View Commit>"
-                    }
-                  ]
-                }
-              ]
+              "text": "✅ ML API built & deployed successfully!\n\n📝 Commit: ${{ toJson(github.event.head_commit.message) }}"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
