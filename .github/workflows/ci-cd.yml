@@ -49,7 +49,7 @@ jobs:
         with:
           payload: |
             {
-              "text": "✅ ML API built & deployed to Kubernetes successfully!"
+              "text": "✅ ML API built & deployed successfully!\n\n📝 Commit: ${{ toJson(github.event.head_commit.message) }}"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
