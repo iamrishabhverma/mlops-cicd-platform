@@ -44,8 +44,56 @@ jobs:
         with:
           webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
           webhook-type: incoming-webhook
+          
           payload: |
             {
-              "text": "✅ ML API built & deployed successfully!\n\n📝 Commit: ${{ github.event.head_commit.message }}"
+            "blocks": [
+              {
+            "type": "header",
+            "text": {
+              "type": "plain_text",
+              "text": "🚀 ML CI/CD Pipeline Update"
             }
-              
+             },
+            {
+            "type": "section",
+            "fields": [
+              {
+                "type": "mrkdwn",
+                "text": "*Repository:*\n${{ github.repository }}"
+              },
+              {
+                "type": "mrkdwn",
+                "text": "*Branch:*\n${{ github.ref_name }}"
+              }
+            ]
+              },
+              {
+            "type": "section",
+            "text": {
+              "type": "mrkdwn",
+              "text": "*Commit Message:*\n${{ toJson(github.event.head_commit.message) }}"
+            }
+             },
+              {
+            "type": "section",
+            "text": {
+              "type": "mrkdwn",
+              "text": "*Commit Description:*\n${{ toJson(github.event.head_commit.body) }}"
+            }
+              },
+             {
+            "type": "section",
+            "fields": [
+              {
+                "type": "mrkdwn",
+                "text": "*Author:*\n${{ github.event.head_commit.author.name }}"
+              },
+              {
+                "type": "mrkdwn",
+                "text": "*Commit URL:*\n<${{ github.event.head_commit.url }}|View Commit>"
+              }
+            ]
+             }
+            ]
+            }
