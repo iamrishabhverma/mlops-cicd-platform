@@ -4,16 +4,24 @@
 set -e
 
 echo "============================"
+echo "PREREQUISITES:"
+echo "============================"
+python3 -m pip install --upgrade pip
+python3 -m pip install scikit-learn
+
+
+
+echo "============================"
 echo "Step 1: Train the model"
 echo "============================"
 cd api/model
-python train.py
+python3 train.py
 cd ..
 cd ..
 echo "Model trained and saved to model/model.pkl"
 
 echo "============================"
-echo "Step 2: Create K3d cluster"
+echo "Step 2: Create K3d cluster"            #Run one time only
 echo "============================"
 k3d cluster create --config k3d/cluster.yaml
 echo "K3d cluster created"
