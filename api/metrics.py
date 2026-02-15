@@ -1,10 +1,3 @@
-# from prometheus_client import Counter, Histogram
-
-# REQUEST_COUNT = Counter("ml_requests_total", "Total ML requests")
-# REQUEST_LATENCY = Histogram("ml_request_latency_seconds", "ML request latency")
-
-
-# metrics.py
 from prometheus_client import Counter, Histogram, Gauge
 
 # Count of prediction requests (success/error)
@@ -30,4 +23,9 @@ PREDICTION_SCORE = Histogram(
 PREDICTION_VARIANCE = Gauge(
     "prediction_variance",
     "Random Forest ensemble variance"
+)
+
+ETA_HISTOGRAM = Histogram(
+    "predicted_eta_hours",
+    "Distribution of predicted ETA values"
 )
