@@ -43,7 +43,7 @@ from sklearn.ensemble import RandomForestRegressor
 import pickle
 import pandas as pd
 
-df = pd.read_csv("model/dataset.csv")
+df = pd.read_csv("dataset.csv")
 
 X = df.drop("eta", axis=1)
 y = df["eta"]
