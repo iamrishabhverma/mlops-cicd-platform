@@ -19,7 +19,7 @@ jobs:
           pip install scikit-learn
           pip install -r requirements.txt 
           python model/train.py
-          cp model/model.pkl model.pkl
+          cp model/model.pkl api/model.pkl
       - name: Login to Docker Hub
         run: >
           echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{
