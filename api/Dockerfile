@@ -4,8 +4,14 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+# COPY app.py metrics.py ./
+# COPY model/model.pkl ./model.pkl
+
+
+
+COPY model ./model
 COPY app.py metrics.py ./
-COPY model/model.pkl ./model.pkl
+
 
 
 EXPOSE 8000

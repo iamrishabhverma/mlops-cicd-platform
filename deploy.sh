@@ -20,28 +20,28 @@ cd ..
 cd ..
 echo "Model trained and saved to model/model.pkl"
 
-echo "============================"
-echo "Step 2: Create K3d cluster"            #Run one time only
-echo "============================"
-k3d cluster create --config k3d/cluster.yaml
-echo "K3d cluster created"
+# echo "============================"
+# echo "Step 2: Create K3d cluster"            #Run one time only
+# echo "============================"
+# k3d cluster create --config k3d/cluster.yaml
+# echo "K3d cluster created"
 
 echo "============================"
 echo "Step 3: Build Docker image"
 echo "============================"
 cd api
-docker build -t ml-api .
+docker build -t iamrishabhverma/ml-ap:latest .
 cd ..
 echo "Docker image ml-api built successfully"
 
 echo "============================"
 echo "Step 4: Import Docker image into K3d cluster"
 echo "============================"
-k3d image import ml-api:latest -c mlops
+k3d image import iamrishabhverma/ml-ap:latest -c mlops
 echo "Image imported into K3d cluster"
 
 echo "============================"
-echo "Step 5: Deploy to Kubernetes cluster"
+echo "Step 5: Deploy to Kubernetes cluster" 
 echo "============================"
 
 kubectl apply -f k8s/ml-api/namespace.yaml  

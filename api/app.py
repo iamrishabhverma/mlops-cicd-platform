@@ -20,13 +20,17 @@ app = FastAPI()
 # Load model
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "model", "model.pkl")
 
+
 print("Looking for model at:", MODEL_PATH)
 print("Exists?", os.path.exists(MODEL_PATH))
 
 # Load the model
-import pickle
-model = pickle.load(open(MODEL_PATH, "rb"))
-print("Loaded model successfully")
+try:
+    model = pickle.load(open(MODEL_PATH, "rb"))
+    print("Loaded model successfully")
+except Exception as e:
+    print(f"Failed to load model: {e}")
+    raise  
 
 # Pydantic schema for prediction
 class PredictionRequest(BaseModel):
@@ -58,7 +62,7 @@ def predict(data: PredictionRequest):
     if REQUEST_LATENCY:
         REQUEST_LATENCY.observe(time.time() - start)
     if REQUEST_COUNT:
-        REQUEST_COUNT.inc()
+        REQUEST_COUNT.labels(status="success").inc()
     if ETA_HISTOGRAM:
         ETA_HISTOGRAM.observe(result)
 

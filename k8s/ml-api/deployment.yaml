@@ -14,9 +14,9 @@ spec:
         app: ml-api
     spec:
       containers:
-      - name: ml-api
-        # Use a local image name for fast k3d development: build & import this image into k3d
-        image: iamrishabhverma/ml-api:latest
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 8000
+        - name: ml-api
+          image: iamrishabhverma/ml-api:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+            
