@@ -20,19 +20,21 @@ Slack notifications: Sends alerts on deployment
 <img width="1024" height="1536" alt="CI_CD pipeline with Slack integration" src="https://github.com/user-attachments/assets/6339c249-239f-48c2-9ac6-6c2502649b4f" />
 
 # Screen shots
-<img width="1426" height="745" alt="Screenshot 2026-02-16 at 4 08 32 PM" src="https://github.com/user-attachments/assets/454786a6-49d5-4d65-ba73-ea72d305fb69" />
-<img width="1426" height="745" alt="Screenshot 2026-02-16 at 4 08 32 PM" src="https://github.com/user-attachments/assets/454786a6-49d5-4d65-ba73-ea72d305fb69" />
+<img width="2864" height="1516" alt="Screenshot 2026-02-16 at 8 12 49 PM" src="https://github.com/user-attachments/assets/82835abe-5feb-4b01-9a08-1dcac1350ad2" />
+
 <img width="1426" height="753" alt="Screenshot 2026-02-16 at 4 10 36 PM" src="https://github.com/user-attachments/assets/bde34c53-65b0-4eff-98d7-46505989ebbd" />
-<img width="1426" height="753" alt="Screenshot 2026-02-16 at 4 10 36 PM" src="https://github.com/user-attachments/assets/bde34c53-65b0-4eff-98d7-46505989ebbd" />
+
+
 <img width="2834" height="1508" alt="Screenshot 2026-02-16 at 6 57 44 PM" src="https://github.com/user-attachments/assets/17cfbf41-692a-4243-b9bd-1a0e5b9bcc4f" />
-<img width="2834" height="1508" alt="Screenshot 2026-02-16 at 6 57 44 PM" src="https://github.com/user-attachments/assets/17cfbf41-692a-4243-b9bd-1a0e5b9bcc4f" />
+
+
 <img width="2834" height="1508" alt="Screenshot 2026-02-16 at 7 00 09 PM" src="https://github.com/user-attachments/assets/724773d6-d097-4608-8f23-d81d479c8825" />
-<img width="2834" height="1508" alt="Screenshot 2026-02-16 at 7 00 09 PM" src="https://github.com/user-attachments/assets/724773d6-d097-4608-8f23-d81d479c8825" />
-<img width="2834" height="1508" alt="Screenshot 2026-02-16 at 7 43 22 PM" src="https://github.com/user-attachments/assets/77b5d3b6-6576-4a52-a688-3f88ba181314" />
+
+
 <img width="2834" height="1508" alt="Screenshot 2026-02-16 at 7 43 22 PM" src="https://github.com/user-attachments/assets/77b5d3b6-6576-4a52-a688-3f88ba181314" />
 <img width="2834" height="1508" alt="Screenshot 2026-02-16 at 7 44 25 PM" src="https://github.com/user-attachments/assets/0fdfd1c8-3776-4135-a16f-850df4242666" />
-<img width="2834" height="1508" alt="Screenshot 2026-02-16 at 7 44 25 PM" src="https://github.com/user-attachments/assets/0fdfd1c8-3776-4135-a16f-850df4242666" />
-<img width="1912" height="930" alt="Screenshot 2026-02-16 at 7 57 18 PM" src="https://github.com/user-attachments/assets/3a7eb53a-d1ae-4f5a-bb63-6c95defe8008" />
+
+
 <img width="1912" height="930" alt="Screenshot 2026-02-16 at 7 57 18 PM" src="https://github.com/user-attachments/assets/3a7eb53a-d1ae-4f5a-bb63-6c95defe8008" />
 
 
