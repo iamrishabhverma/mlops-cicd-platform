@@ -1,42 +1,94 @@
-# MLOps CI/CD Platform
+# MLOps Continuous Integration & Continuous Deployment (CI/CD) Platform
+### Automated Logistics ETA Prediction Pipeline with GitOps Engine & Kubernetes Orchestration
+**Rishabh Verma** | [github.com/iamrishabhverma](https://github.com/iamrishabhverma) | [linkedin.com/in/iamrishabhverma](https://www.linkedin.com/in/iamrishabhverma)
 
-MLOps FastAPI ML API Pipeline using FastAPI + Docker + K8s + GitHub Actions + Prometheus + Grafana + Slack
+---
 
-This project demonstrates a production-ready MLOps pipeline for a machine learning model:
+## Project Overview
+This platform delivers an enterprise-grade, GitOps-driven MLOps CI/CD infrastructure that automates the complete lifecycle of a **Random Forest Regressor (`RandomForestRegressor`)** model trained to predict **ETA (Estimated Time of Arrival)** for logistics freight operations. By treating both machine learning assets and cluster configurations as declarative software code, this architecture ensures deterministic, zero-downtime model deployments alongside live tracking monitoring.
 
-FastAPI ML API: Serves ML predictions and exposes metrics
-Docker: Containerizes the application
-Kubernetes (k3d): Orchestrates deployment
-ArgoCD Gitops CD operations
-Prometheus: Monitors metrics
-GitHub Actions: Automates CI/CD pipeline
-Slack notifications: Sends alerts on deployment
+The system completely abstracts manual operations by enforcing a distinct division of labor between two core orchestration components:
+1. **Continuous Integration Pipeline (GitHub Actions):** Automates linting, structural testing, training, validation threshold gating, and immutable packaging.
+2. **Continuous Delivery Pipeline (ArgoCD & Kubernetes):** Employs a declarative GitOps engine to reconcile cluster state, execute canary/blue-green rolling microservice updates, and establish automated metrics scrape points.
 
+---
 
-[mlops-Readme.pdf](https://github.com/user-attachments/files/24224828/mlops-Readme.pdf)
+## Key Achievements
+* **Automated ETA Regression Model:** Engineered an automated training pipeline utilizing `RandomForestRegressor` to compute highly accurate trip time estimates based on haul distances, payload dimensions, transit speed, and traffic conditions.
+* **Automated Quality Performance Gates:** Implemented metric evaluation boundaries during the CI phase to dynamically block containerization workflows unless the model meets strict baseline validation metrics.
+* **Declarative GitOps Delivery Infrastructure:** Integrated ArgoCD to actively watch git state modifications (`k8s YAML`), eliminating configuration drift by automatically synchronizing desired production configurations onto the live environment.
+* **Lightweight Local Cluster Topologies:** Standardized containerized runtime environments inside a highly efficient **Kubernetes (k3d / k3s)** local cluster setup to replicate enterprise-level cloud behaviors smoothly.
+* **Real-time Observability Core:** Wired automated telemetry collection channels using **Prometheus** to pull analytics straight from `/metrics` endpoints, feeding a live **Grafana** visualization grid for active performance auditing.
+* **Enterprise Notification Channels:** Linked asynchronous webhooks connecting pipeline execution phases directly to team messaging applications (`Slack: #all-devops-clan`) to ensure real-time status transparency.
 
+---
 
-
-<img width="1024" height="1536" alt="CI_CD pipeline with Slack integration" src="https://github.com/user-attachments/assets/6339c249-239f-48c2-9ac6-6c2502649b4f" />
-
-# Screen shots
-<img width="2864" height="1516" alt="Screenshot 2026-02-16 at 8 12 49 PM" src="https://github.com/user-attachments/assets/82835abe-5feb-4b01-9a08-1dcac1350ad2" />
-
-<img width="1426" height="753" alt="Screenshot 2026-02-16 at 4 10 36 PM" src="https://github.com/user-attachments/assets/bde34c53-65b0-4eff-98d7-46505989ebbd" />
-
-
-<img width="2834" height="1508" alt="Screenshot 2026-02-16 at 6 57 44 PM" src="https://github.com/user-attachments/assets/17cfbf41-692a-4243-b9bd-1a0e5b9bcc4f" />
-
-
-<img width="2834" height="1508" alt="Screenshot 2026-02-16 at 7 00 09 PM" src="https://github.com/user-attachments/assets/724773d6-d097-4608-8f23-d81d479c8825" />
+## Complete Pipeline Architecture & Data Flow
+<img width="480" height="720" alt="image" src="https://github.com/user-attachments/assets/44c3107e-3bb9-4960-b84f-26028706ba79" />
 
 
-<img width="2834" height="1508" alt="Screenshot 2026-02-16 at 7 43 22 PM" src="https://github.com/user-attachments/assets/77b5d3b6-6576-4a52-a688-3f88ba181314" />
-<img width="2834" height="1508" alt="Screenshot 2026-02-16 at 7 44 25 PM" src="https://github.com/user-attachments/assets/0fdfd1c8-3776-4135-a16f-850df4242666" />
+### Detailed Lifecycle Execution Steps:
+1. **The Code Trigger:** A developer pushes code adjustments or fresh telemetry training sets to the remote repository `main` branch.
+2. **Continuous Integration Run:** GitHub Actions catches the change event, immediately starting tasks to initialize training arrays, compile structural weights via `src/train.py`, test precision bounds, and construct a clean container package. Status webhooks push execution reports directly onto dedicated communication lines (`#all-devops-clan`).
+3. **Registry Storage:** Validated application layers are wrapped as an optimized, immutable image target, marked with appropriate semantic metadata, and sent up directly to **Docker Hub** as `ml-api:latest`.
+4. **GitOps State Verification:** ArgoCD constantly evaluates current deployment manifestations across the live Kubernetes clusters against target properties mapped in version control. When a change in manifest versions or deployment state occurs, it triggers zero-downtime application rollouts.
+5. **Runtime Cluster Isolation:** The serving microservice drops inside standard **Kubernetes (k3d / k3s)** namespaces as an optimized **FastAPI** deployment endpoint.
+6. **Telemetry Scrape Tracking:** Prometheus queries the internal pods via `/metrics` regularly, logging data queries and performance profiles, which are displayed on live monitoring panels in Grafana.
+
+---
+
+## Production Deployment & Platform Interfaces
+
+### 1. Interactive API Serving Interface (FastAPI)
+The deployed machine learning microservice exposes dedicated endpoints for live system performance auditing (`/metrics`), cluster deployment verification (`/health`), and programmatic ETA evaluations (`/predict`).
+
+<img width="2864" height="1516" alt="550687594-82835abe-5feb-4b01-9a08-1dcac1350ad2" src="https://github.com/user-attachments/assets/718d2ec8-877e-4932-9a4b-37c8e9e70380" />
 
 
-<img width="1912" height="930" alt="Screenshot 2026-02-16 at 7 57 18 PM" src="https://github.com/user-attachments/assets/3a7eb53a-d1ae-4f5a-bb63-6c95defe8008" />
+### 2. Live Evaluation Live Testing Output
+Sending automated validation JSON requests mapping distance, payload weight, transit speed, and environmental indices returns low-latency inference payloads natively over HTTP.
 
+<img width="1426" height="753" alt="550687098-bde34c53-65b0-4eff-98d7-46505989ebbd" src="https://github.com/user-attachments/assets/9681c410-fc12-47f7-9af6-19f7d3c7cb4c" />
+<img width="2834" height="1508" alt="550687088-77b5d3b6-6576-4a52-a688-3f88ba181314" src="https://github.com/user-attachments/assets/be2fa697-4417-46be-90ad-c2b5472d0c37" />
+
+
+### 3. Declarative GitOps Git Synchronization (ArgoCD Dashboard)
+Our platform utilizes active ArgoCD loops to continuously poll for configuration updates inside the Git manifests repository, automatically reconciling live environments without requiring manual access to cluster consoles.
+
+<img width="2834" height="1508" alt="550687097-17cfbf41-692a-4243-b9bd-1a0e5b9bcc4f" src="https://github.com/user-attachments/assets/7c1a5a74-306d-4f46-9946-f5f2fa16fae3" />
+
+
+### 4. Telemetry Scraping & PromQL Inspection (Prometheus Engine)
+A specialized `Prometheus-FastAPI-Instrumentator` core parses runtime telemetry details, cataloging memory profiles and CPU logs across internal namespaces via custom application hooks (`process_cpu_seconds_total`).
+
+<img width="2834" height="1508" alt="550687084-0fdfd1c8-3776-4135-a16f-850df4242666" src="https://github.com/user-attachments/assets/510039a6-1883-4b08-bbfc-f399a266f1b1" />
+
+
+### 5. Multi-Service Visual Performance Auditing (Grafana Framework)
+To analyze deployment metrics effortlessly, Grafana links directly to raw Prometheus datastores, parsing time-series calculations into clear telemetry dashboards.
+
+<img width="1912" height="930" alt="550687082-3a7eb53a-d1ae-4f5a-bb63-6c95defe8008" src="https://github.com/user-attachments/assets/b2b42318-9663-443a-b546-807813f91b88" />
+
+
+### 6. Pipeline Notifications Channel (Slack Bot Integration)
+GitHub CI pipelines and ArgoCD deployment systems push real-time status notifications straight onto corporate communication lines (`#all-devops-clan`), confirming compilation logs, commit IDs, and target branch state instantly.
+
+<img width="2834" height="1508" alt="550687090-724773d6-d097-4608-8f23-d81d479c8825" src="https://github.com/user-attachments/assets/f6aaeafa-7ba0-42e7-9c72-33687880b549" />
+
+
+---
+
+## Technology Stack
+* **ML Stack & Core Modeling:** Python 3, Scikit-Learn (`RandomForestRegressor`), Pandas, Joblib
+* **Serving Layer Microservice:** FastAPI, Uvicorn, Prometheus-FastAPI-Instrumentator
+* **CI Validation Automation:** GitHub Actions, PyTest, Flake8, Black
+* **Container Registry & Management:** Docker, Docker Hub
+* **GitOps Continuous Delivery:** ArgoCD
+* **Container Orchestration Fabric:** Kubernetes (k3d / k3s engines)
+* **Observability & Infrastructure Auditing:** Prometheus, Grafana
+* **Team Communication Integrations:** Slack Webhooks
+
+---
 
 
 ## Quick Start
