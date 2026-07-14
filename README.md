@@ -90,7 +90,7 @@ The deployment pipeline follows GitOps principles.
 8. Prometheus begins scraping metrics.
 9. Grafana dashboards update automatically.
 
-![alt text](<Screenshot 2026-07-14 at 6.51.37 PM.png>)
+<img width="313" height="611" alt="Screenshot 2026-07-14 at 6 51 37 PM" src="https://github.com/user-attachments/assets/48f315c1-63fc-4246-a659-60d58cfb5f41" />
 
 
 ---
