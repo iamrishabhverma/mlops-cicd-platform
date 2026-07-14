@@ -76,6 +76,23 @@ GitHub CI pipelines and ArgoCD deployment systems push real-time status notifica
 <img width="2834" height="1508" alt="550687090-724773d6-d097-4608-8f23-d81d479c8825" src="https://github.com/user-attachments/assets/f6aaeafa-7ba0-42e7-9c72-33687880b549" />
 
 
+### GitHub Actions Workflow
+
+The deployment pipeline follows GitOps principles.
+
+1. Developer pushes code.
+2. GitHub Actions builds Docker image.
+3. Image is pushed to Docker Hub.
+4. Kubernetes manifests are updated.
+5. ArgoCD detects repository changes.
+6. ArgoCD synchronizes Kubernetes.
+7. Rolling deployment occurs.
+8. Prometheus begins scraping metrics.
+9. Grafana dashboards update automatically.
+
+![alt text](<Screenshot 2026-07-14 at 6.51.37 PM.png>)
+
+
 ---
 
 ## Technology Stack
