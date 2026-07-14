@@ -79,9 +79,9 @@ GitHub CI pipelines and ArgoCD deployment systems push real-time status notifica
 ---
 
 ## Technology Stack
-* **ML Stack & Core Modeling:** Python 3, Scikit-Learn (`RandomForestRegressor`), Pandas, Joblib
+* **ML Stack & Core Modeling:** Python 3, boto3, Scikit-Learn (`RandomForestRegressor`), Pandas
 * **Serving Layer Microservice:** FastAPI, Uvicorn, Prometheus-FastAPI-Instrumentator
-* **CI Validation Automation:** GitHub Actions, PyTest, Flake8, Black
+* **CI Validation Automation:** GitHub Actions
 * **Container Registry & Management:** Docker, Docker Hub
 * **GitOps Continuous Delivery:** ArgoCD
 * **Container Orchestration Fabric:** Kubernetes (k3d / k3s engines)
